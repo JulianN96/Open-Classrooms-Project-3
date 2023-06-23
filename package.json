@@ -1,0 +1,11 @@
+{
+  "name": "sophie-bluel-site",
+  "version": "1.0.0",
+  "description": "Site pour Sophie Bluel",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julian Norris",
+  "license": "ISC"
+}
