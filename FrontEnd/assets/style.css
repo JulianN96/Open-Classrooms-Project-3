@@ -216,3 +216,101 @@ footer nav ul {
 	margin: 2em
 }
 
+.menuActive{
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* Login Screen */
+
+.login__main{
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	height: 80vh;
+}
+
+.login__form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 379px;
+
+}
+
+.login__title{
+	margin: 2em;
+}
+
+.login__form .p{
+	color: #3D3D3D;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+}
+
+.login__form button{
+	border-radius: 60px;
+	align-self: center;
+	background: #1D6154;
+	width: 179px;
+	height: 36px;
+	flex-shrink: 0;
+	border: none;
+	
+	color: #FFF;
+	text-align: center;
+	font-family: Syne;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.login__form button:hover,
+.login__form button:active{
+	cursor: pointer;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+.login__form-email,
+.login__form-password{
+	margin: 0.5em 0 2em 0;
+	align-self: center;
+	width: 363px;
+	height: 51px;
+	flex-shrink: 0;
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	border: none;
+	padding: 0em 1em;
+	font-family: Syne;
+	font-size: 1em;
+}
+
+.login__form--incorrect{
+	border: solid 1px red;
+}
+
+.login__form a{
+	align-self: center;
+	margin: 2em 0;
+	color: #3D3D3D;
+}
+
+footer{
+	width: 100%;
+	display: flex;
+	justify-content: end;
+}
+
+footer a{
+	color:#3D3D3D;
+	text-decoration: none;
+	font-family: Work Sans;
+}

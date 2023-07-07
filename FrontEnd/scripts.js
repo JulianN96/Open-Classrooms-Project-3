@@ -4,6 +4,12 @@ let activeFilters = []
 const gallery = document.getElementsByClassName("gallery")
 const filterButtons = document.getElementsByClassName("filters__button")
 const works = document.getElementsByClassName("work")
+const loginButton = document.getElementById("loginButton")
+
+//Login Button on main page
+// loginButton.addEventListener("click", () => {
+//     window.open("localhost5500/FrontEnd/login.html")
+// })
 
 
 //Filter Logic
