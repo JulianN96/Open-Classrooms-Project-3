@@ -5,6 +5,11 @@ const gallery = document.getElementsByClassName("gallery")
 const filterButtons = document.getElementsByClassName("filters__button")
 const works = document.getElementsByClassName("work")
 const loginButton = document.getElementById("loginButton")
+const loginForm = document.getElementById("login__form")
+const loginUser = document.getElementById("login__form-email")
+const loginPassword = document.getElementById("login__form-password")
+
+const testButton = document.getElementById("testButton")
 
 //Login Button on main page
 // loginButton.addEventListener("click", () => {
@@ -131,3 +136,41 @@ async function getWorks(){
 }
 
 getWorks()
+
+//Login Function
+
+testButton.addEventListener("click", () => {
+    console.log("button clicked")
+    loginUsers()
+})
+
+loginButton.addEventListener("submit", (e) => {
+    e.preventDefault();
+    getUsers();
+})
+
+async function loginUsers(){
+
+    try{
+        console.log(loginUser.value)
+        const loginPromise = makeRequest("POST", api + "/users/login", {
+            "email" : loginUser.value,
+            "password" : loginPassword.value
+        })
+        try{
+            const loginResponse = await loginPromise;
+            if(loginResponse.userId === 1){
+                console.log("Logged in")
+            } else{
+                console.log("Login Failed" +  loginResponse)
+            }
+        }
+        catch(error){
+            console.log(error.error)
+        }
+    }
+    
+     catch(error){
+        console.log(error)
+    }
+}
