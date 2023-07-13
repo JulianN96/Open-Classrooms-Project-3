@@ -146,7 +146,7 @@ testButton.addEventListener("click", () => {
 
 loginButton.addEventListener("submit", (e) => {
     e.preventDefault();
-    getUsers();
+    loginUsers();
 })
 
 async function loginUsers(){
@@ -154,19 +154,19 @@ async function loginUsers(){
     try{
         console.log(loginUser.value)
         const loginPromise = makeRequest("POST", api + "/users/login", {
-            "email" : loginUser.value,
-            "password" : loginPassword.value
+            "email": loginUser.value,
+            "password": loginPassword.value
         })
         try{
+            console.log("Object sent: ",loginUser.value, loginPassword.value)
             const loginResponse = await loginPromise;
             if(loginResponse.userId === 1){
                 console.log("Logged in")
-            } else{
-                console.log("Login Failed" +  loginResponse)
+                window.open("localhost5500/FrontEnd/index.html")
             }
         }
         catch(error){
-            console.log(error.error)
+            console.log("Login Failed" + error.error)
         }
     }
     
