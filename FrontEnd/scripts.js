@@ -139,12 +139,12 @@ getWorks()
 
 //Login Function
 
-testButton.addEventListener("click", () => {
-    console.log("button clicked")
-    loginUsers()
-})
+// testButton.addEventListener("click", () => {
+//     console.log("button clicked")
+//     loginUsers()
+// })
 
-loginButton.addEventListener("submit", (e) => {
+loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
     loginUsers();
 })
@@ -158,11 +158,10 @@ async function loginUsers(){
             "password": loginPassword.value
         })
         try{
-            console.log("Object sent: ",loginUser.value, loginPassword.value)
             const loginResponse = await loginPromise;
             if(loginResponse.userId === 1){
                 console.log("Logged in")
-                window.open("localhost5500/FrontEnd/index.html")
+                window.location = "index.html"
             }
         }
         catch(error){
