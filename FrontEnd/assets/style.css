@@ -222,6 +222,175 @@ footer nav ul {
 	font-weight: bold;
 }
 
+
+/* Edit Mode */
+
+.editMode--active{
+	display: flex;
+}
+
+.modifyProject__container{
+	display: flex;
+	cursor: pointer;
+}
+
+.modifyProject__text{
+	padding-left: .5em;
+}
+
+.editMode--hidden{
+	display: none;
+}
+
+
+/* Modal */
+
+#modifyModal{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: none;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0,0,0,0.4); 
+}
+
+.modifyModal__content{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #FFF;
+	margin: 4% auto;
+	padding: 2em;
+	border: 1px solid #888;
+	border-radius: 10px;
+	width: 630px;
+	height: 731px;
+	flex-shrink: 0;
+}
+
+.modifyModal__close{
+	align-self: flex-end;
+	cursor: pointer;
+}
+
+.modifyModal__back{
+	cursor: pointer;
+}
+
+.modifyModal__gallery{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 2em;
+	width: 80%;
+	margin: 1em;
+}
+
+.modifyModal__content .work{
+	display: flex;
+	flex-direction: column;
+	width: 78.123px;
+	height: 104.08px;
+	flex-shrink: 0;
+}
+
+.modifyModal__divider{
+	width: 420px;
+	height: 1px;
+	background: #B3B3B3;
+}
+
+.modifyModal__button{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border: none;
+	padding: 1em 1.5em;
+	border-radius: 60px ;
+	color: #FFF;
+	cursor: pointer;
+}
+
+.modifyModal__deleteGallery{
+	background-color: #FFF;
+	border: none;
+	color: #D65353;
+	text-align: center;
+	font-family: Syne;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	cursor: pointer;
+}
+
+
+/* Add modal*/
+
+.modifyModal__topIcons{
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	margin: 1em 0;
+}
+
+.modifyModal__imageAddTitle{
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 1em;
+}
+
+.modifyModal__imageAddContainer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 3px;
+	background: #E8F1F6;
+	width: 420px;
+	height: 169px;
+	flex-shrink: 0;
+	margin-bottom: 1em;
+}
+
+.modifyModal__imageAddButton{
+	width: 173px;
+	height: 36px;
+	border-radius: 50px;
+	border: none;
+	background: #CBD6DC;
+	color: #306685;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin: 1em;
+}
+
+.modifyModal__imageAddRules{
+	color: #444;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
 /* Login Screen */
 
 .login__main{
@@ -295,6 +464,13 @@ footer nav ul {
 
 .login__form--incorrect{
 	border: solid 1px red;
+}
+
+#login__form--errorMessage{
+	display: none;
+	align-self: center;
+	padding-bottom: 1em;
+	color: red;
 }
 
 .login__form a{
