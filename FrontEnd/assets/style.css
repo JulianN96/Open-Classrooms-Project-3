@@ -284,23 +284,39 @@ footer nav ul {
 .modifyModal__gallery{
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
-	gap: 2em;
+	gap: 1.25em;
 	width: 80%;
-	margin: 1em;
+	margin: 4em 1em;
 }
 
-.modifyModal__content .work{
+.modifyModal__workContainer{
 	display: flex;
 	flex-direction: column;
 	width: 78.123px;
 	height: 104.08px;
 	flex-shrink: 0;
+	position: relative;
+}
+
+.modifyModal__figureDelete{
+	position: absolute;
+	z-index: 2;
+	top: 5px;
+	left: 55px;
+	cursor: pointer;
+}
+
+.modifyModal__figureTrash{
+	background-color: black;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 .modifyModal__divider{
 	width: 420px;
 	height: 1px;
 	background: #B3B3B3;
+	margin: 1em;
 }
 
 .modifyModal__button{
@@ -309,7 +325,7 @@ footer nav ul {
 	color: white;
 	background-color: #1D6154;
 	margin : 2em auto ;
-	width: 180px;
+	width: 240px;
 	text-align: center;
 	border: none;
 	padding: 1em 1.5em;
