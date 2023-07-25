@@ -69,41 +69,41 @@ async function getWorks(galleryId){
 
 
 
-//Login Function
-async function loginUsers(){
+// //Login Function
+// async function loginUsers(){
 
-    const api = "http://localhost:5678/api"
-    const loginUser = document.getElementById("login__form-email")
-    const loginPassword = document.getElementById("login__form-password")
-    const loginButton = document.getElementById("loginButton")
-    const errorMessage = document.getElementById("login__form--errorMessage")
+//     const api = "http://localhost:5678/api"
+//     const loginUser = document.getElementById("login__form-email")
+//     const loginPassword = document.getElementById("login__form-password")
+//     const loginButton = document.getElementById("loginButton")
+//     const errorMessage = document.getElementById("login__form--errorMessage")
 
-    try{
-        console.log(loginUser.value)
-        const loginPromise = makeRequest("POST", api + "/users/login", {
-            "email": loginUser.value,
-            "password": loginPassword.value
-        })
-        try{
-            const loginResponse = await loginPromise;
-            if(loginResponse.userId === 1){
-                console.log("Logged in")
-                window.location = "index.html"
-                // activateEditMode();
-            }
-        }
-        catch(error){
-            console.log("Login Failed" + error.error)
-            errorMessage.style.display = "block"
-            loginUser.classList.add("login__form--incorrect")
-            loginPassword.classList.add("login__form--incorrect")
-        }
-    }
+//     try{
+//         console.log(loginUser.value)
+//         const loginPromise = makeRequest("POST", api + "/users/login", {
+//             "email": loginUser.value,
+//             "password": loginPassword.value
+//         })
+//         try{
+//             const loginResponse = await loginPromise;
+//             if(loginResponse.userId === 1){
+//                 console.log("Logged in")
+//                 window.location = "index.html"
+//                 // activateEditMode();
+//             }
+//         }
+//         catch(error){
+//             console.log("Login Failed" + error.error)
+//             errorMessage.style.display = "block"
+//             loginUser.classList.add("login__form--incorrect")
+//             loginPassword.classList.add("login__form--incorrect")
+//         }
+//     }
     
-     catch(error){
-        console.log(error)
-    }
-}
+//      catch(error){
+//         console.log(error)
+//     }
+// }
 
 
 //Activate Edit Mode Functions
