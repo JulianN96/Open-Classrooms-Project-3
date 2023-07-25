@@ -1,5 +1,5 @@
-
-
+import Display from './lib/display.js'
+import Requestapi from './lib/requestapi.js'
 //Global function to interact with API
 
 function makeRequest (verb, url, data){
@@ -35,27 +35,14 @@ function makeRequest (verb, url, data){
         })
 }
 
-
 //Get works function
 
 async function getWorks(galleryId){
     
-    const api = "http://localhost:5678/api"
     const gallery = document.getElementsByClassName(`${galleryId}`)
     if (galleryId == "gallery"){
-        try{
-            const worksData = await makeRequest("GET", api + "/works")
-            for (work of worksData){
-                gallery[0].innerHTML += `
-                <figure class="work category${work.categoryId}">
-                    <img src="${work.imageUrl}" alt="${work.title}">
-                    <figcaption>${work.title}</figcaption>
-                </figure>
-                `
-            }
-        } catch(error){
-            console.log(error)
-        }
+        let worksData = await Requestapi.getData("/works");
+        Display.displayWorks(worksData);
     } if (galleryId == "modifyModal__gallery"){
         try{
             const worksData = await makeRequest("GET", api + "/works")
@@ -102,6 +89,7 @@ async function loginUsers(){
             if(loginResponse.userId === 1){
                 console.log("Logged in")
                 window.location = "index.html"
+                // activateEditMode();
             }
         }
         catch(error){
@@ -117,6 +105,16 @@ async function loginUsers(){
     }
 }
 
+
+//Activate Edit Mode Functions
+
+function activateEditMode(){
+    let editModeItems = document.getElementsByClassName("editMode--hidden")
+    for (editItem of editModeItems){
+        editItem.classList.remove("editMode--hidden")
+        editItem.classList.add("editMode--active")
+    }
+}
 
 //Modal Functions
 function displayModifyModal(){
@@ -192,7 +190,7 @@ function init(){
 
     
     //Filter Logic
-    for (i=0; i < filterButtons.length; i++){
+    for (let i=0; i < filterButtons.length; i++){
         filterButtons[i].addEventListener("click", (e) =>{
 
             if(e.target.classList.contains("filters__button--active")){
@@ -205,7 +203,7 @@ function init(){
                 }
                 activeFilters = newActiveFilters
 
-            } else{
+            } else if(!e.target.classList.contains("filters__button--active")){
                 e.target.classList.add("filters__button--active")
                 if (activeFilters.length > 0){
                     let newActiveFilters = []
@@ -262,7 +260,7 @@ function init(){
     })
 
     loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
         loginUsers();
     })
 
