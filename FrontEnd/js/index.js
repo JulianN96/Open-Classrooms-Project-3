@@ -187,17 +187,15 @@ function init(){
     const modifyProjectsButton = document.querySelector(".modifyProject__container")
     
     //Filter Logic
-    for (let i=0; i < filterButtons.length; i++){
-        filterButtons[i].addEventListener("click", (e) =>{
-
+    Array.from(filterButtons).forEach((button) => {
+        button.addEventListener("click", (e) =>{
             if(e.target.classList.contains("filters__button--active")){
                 e.target.classList.remove("filters__button--active")
                 getWorks("gallery")
                 filterButtons[0].classList.add("filters__button--active")
-
             } else if(!e.target.classList.contains("filters__button--active")){
-                Array.from(filterButtons).forEach((button) => {
-                    button.classList.remove("filters__button--active")
+                Array.from(filterButtons).forEach((sbutton) => {
+                    sbutton.classList.remove("filters__button--active")
                 });
                 e.target.classList.add("filters__button--active")
                 async function addFilter(){
@@ -206,18 +204,17 @@ function init(){
                 }
                 addFilter()
             }
-
             if(e.target.id == 0){
                 getWorks("gallery")
             }
         })
-    }
+    })
+
     getWorks("gallery")
 
     modifyProjectsButton.addEventListener("click", (e) => {
         displayModifyModal();
     })
-
 }
 
 init()
