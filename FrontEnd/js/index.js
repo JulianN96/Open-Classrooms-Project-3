@@ -1,3 +1,4 @@
+import display from './lib/display.js';
 import Display from './lib/display.js'
 import Requestapi from './lib/requestapi.js'
 //Global function to interact with API
@@ -182,12 +183,8 @@ function displayAddModal(){
 }
 
 function init(){
-    let activeFilters = []
     const filterButtons = document.getElementsByClassName("filters__button")
-    const works = document.getElementsByClassName("work")
-    const loginForm = document.getElementById("login__form")
     const modifyProjectsButton = document.querySelector(".modifyProject__container")
-
     
     //Filter Logic
     for (let i=0; i < filterButtons.length; i++){
@@ -195,76 +192,31 @@ function init(){
 
             if(e.target.classList.contains("filters__button--active")){
                 e.target.classList.remove("filters__button--active")
-                let newActiveFilters = []
-                for(filter of activeFilters){
-                    if (filter != e.target.id){
-                        newActiveFilters.push(filter)
-                    }
-                }
-                activeFilters = newActiveFilters
+                getWorks("gallery")
+                filterButtons[0].classList.add("filters__button--active")
 
             } else if(!e.target.classList.contains("filters__button--active")){
+                Array.from(filterButtons).forEach((button) => {
+                    button.classList.remove("filters__button--active")
+                });
                 e.target.classList.add("filters__button--active")
-                if (activeFilters.length > 0){
-                    let newActiveFilters = []
-                    console.log("activefilters" + activeFilters)
-                    newActiveFilters.push(+e.target.id)
-                    for (filter of activeFilters){
-                        console.log("targetID " + e.target.id)
-                        if(filter != +e.target.id){
-                            newActiveFilters.push(filter)
-                        }
-                    }
-                    activeFilters = newActiveFilters
-                } else {
-                    activeFilters.push(+e.target.id)  
+                async function addFilter(){
+                    const worksData = await Requestapi.getData("/works")
+                    Display.filterDisplay(worksData, e.target.id)
                 }
-                if(e.target.id == 0){  
-                    for (button of filterButtons){
-                        button.classList.remove("filters__button--active")
-                    }
-                    activeFilters = []
-                }
-            } 
+                addFilter()
+            }
 
-            //disappear logic goes here
-            
-            if (activeFilters.length === 0){
-                for(work of works){
-                    work.style.display="block"
-                }
-            }else{
-                let showWorksArray = []
-                for(work of works){
-                    for(filter of activeFilters){
-                        if(work.classList.contains(`category${filter}`)){
-                            showWorksArray.push(work)
-                        }else{
-                            work.style.display="none"
-                        }
-                    }
-                }
-                console.log(showWorksArray)
-                for (showWork of showWorksArray){
-                    showWork.style.display="block"
-                }
+            if(e.target.id == 0){
+                getWorks("gallery")
             }
         })
     }
-
-
     getWorks("gallery")
 
     modifyProjectsButton.addEventListener("click", (e) => {
         displayModifyModal();
     })
-
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault(); 
-        loginUsers();
-    })
-
-
 
 }
 
