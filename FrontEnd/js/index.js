@@ -2,38 +2,38 @@ import Display from './lib/display.js'
 import Requestapi from './lib/requestapi.js'
 //Global function to interact with API
 
-function makeRequest (verb, url, data){
-    return new Promise((resolve, reject) =>{
+// function makeRequest (verb, url, data){
+//     return new Promise((resolve, reject) =>{
         
-        //Error handlers
-        if(verb === "POST" && !data){
-            reject({error: "No data object provided for POST request"})
-        }
-        if (verb !== "POST" && verb !== "GET"){
-            reject({Error: "Invalid request verb"})
-        }
+//         //Error handlers
+//         if(verb === "POST" && !data){
+//             reject({error: "No data object provided for POST request"})
+//         }
+//         if (verb !== "POST" && verb !== "GET"){
+//             reject({Error: "Invalid request verb"})
+//         }
         
-        //main function
-        let request = new XMLHttpRequest()
-        request.open(verb, url)
-        request.onreadystatechange = () => {
-            if(request.readyState === 4){
-                if(request.status === 200 || request.status === 201){
-                    resolve(JSON.parse(request.response))
-                } else {
-                    reject(JSON.parse(request.response))
-                }
-            }  
-        }
+//         //main function
+//         let request = new XMLHttpRequest()
+//         request.open(verb, url)
+//         request.onreadystatechange = () => {
+//             if(request.readyState === 4){
+//                 if(request.status === 200 || request.status === 201){
+//                     resolve(JSON.parse(request.response))
+//                 } else {
+//                     reject(JSON.parse(request.response))
+//                 }
+//             }  
+//         }
 
-        if (verb === "POST"){
-            request.setRequestHeader("Content-Type", "application/json")
-            request.send(JSON.stringify(data))
-        } else {
-            request.send()
-        }
-        })
-}
+//         if (verb === "POST"){
+//             request.setRequestHeader("Content-Type", "application/json")
+//             request.send(JSON.stringify(data))
+//         } else {
+//             request.send()
+//         }
+//         })
+// }
 
 //Get works function
 
