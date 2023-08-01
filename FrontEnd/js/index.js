@@ -1,6 +1,7 @@
-import display from './lib/display.js';
 import Display from './lib/display.js'
 import Requestapi from './lib/requestapi.js'
+import Modal from './lib/modal.js';
+
 //Global function to interact with API
 
 // function makeRequest (verb, url, data){
@@ -118,33 +119,7 @@ function activateEditMode(){
 }
 
 //Modal Functions
-function displayModifyModal(){
-    let modifyModal = document.getElementById("modifyModal")
-    modifyModal.style.display = "block";
-    let modifyModalContent = document.querySelector(".modifyModal__content")
-    modifyModalContent.innerHTML = `
-        <svg class="modifyModal__close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M17.6546 8.05106C18.1235 7.58214 18.1235 6.82061 17.6546 6.35169C17.1856 5.88277 16.4241 5.88277 15.9552 6.35169L12.005 10.3056L8.05106 6.35544C7.58214 5.88652 6.82061 5.88652 6.35169 6.35544C5.88277 6.82436 5.88277 7.58589 6.35169 8.05481L10.3056 12.005L6.35544 15.9589C5.88652 16.4279 5.88652 17.1894 6.35544 17.6583C6.82436 18.1272 7.58589 18.1272 8.05481 17.6583L12.005 13.7044L15.9589 17.6546C16.4279 18.1235 17.1894 18.1235 17.6583 17.6546C18.1272 17.1856 18.1272 16.4241 17.6583 15.9552L13.7044 12.005L17.6546 8.05106Z" fill="black"/>
-        </svg>
-        <h2>Galerie photo</h2>
-        <div class="modifyModal__gallery"></div>
-        <div class="modifyModal__divider"></div>
-        <button class="modifyModal__button">Ajouter une photo</button>
-        <button class="modifyModal__deleteGallery">Supprimer la galerie</button>`
 
-    let modifyModalGallery = document.querySelector(".modifyModal__gallery")
-    let addButton = document.querySelector(".modifyModal__button")
-    const closeModalButton = document.querySelector(".modifyModal__close").addEventListener("click", () => {
-        modifyModal.style.display = "none"
-    })
-    modifyModalGallery.innerHTML = ``;
-    getWorks("modifyModal__gallery")
-
-    addButton.addEventListener("click", () => {
-        displayAddModal();
-    })
-    
-}
 
 function displayAddModal(){
     let modifyModalContent = document.querySelector(".modifyModal__content")
@@ -213,7 +188,7 @@ function init(){
     getWorks("gallery")
 
     modifyProjectsButton.addEventListener("click", (e) => {
-        displayModifyModal();
+        Modal.openModifyModal();
     })
 }
 
