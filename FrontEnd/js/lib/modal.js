@@ -1,8 +1,7 @@
 import Display from "./display.js";
 import Requestapi from "./requestapi.js";
 
-async function openModifyModal(){
-    let worksData = await Requestapi.getData("/works")
+async function openModifyModal(worksData){
     Display.displayModifyModal(worksData)
 
     let addButton = document.querySelector(".modifyModal__button")
@@ -19,7 +18,14 @@ async function openModifyModal(){
             modifyModal.style.display = "none"
         }
     }
-    
+
+    let deleteWorkButtonArray = document.getElementsByClassName("modifyModal__figureDelete")
+    console.log(deleteWorkButtonArray)
+    Array.from(deleteWorkButtonArray).forEach((deleteButton) => {
+        deleteButton.addEventListener("click", (e) => {
+            Requestapi.deleteWork("/works", deleteButton.id, localStorage.token)
+        })
+    })
 }
 
 function openAddModal(){
@@ -28,6 +34,22 @@ function openAddModal(){
         modifyModal.style.display = "none"
     })
     const backModalButton = document.querySelector(".modifyModal__back").addEventListener("click", () => {openModifyModal()})
+    const submitButton = document.querySelector(".modifyModal__formButton").addEventListener("click", () => {addNewWork})
+}
+
+function addNewWork(){
+    const newImage = document.querySelector(".modifyModal__imageAddContainer")
+    const newTitle = document.querySelector(".addModal__title")
+    const newCategory = document.querySelector(".addModal__category")
+
+    let newWork = {
+        "image": newImage.value,
+        "title": newTitle.value,
+        "category": newCategory.value
+    }
+
+    console.log(newWork)
+    // Requestapi.postData("/works", newWork, localStorage.token)
 }
 
 export default{

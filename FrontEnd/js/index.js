@@ -192,7 +192,7 @@ async function init(){
     getWorks(worksData, "gallery")
 
     modifyProjectsButton.addEventListener("click", (e) => {
-        Modal.openModifyModal();
+        Modal.openModifyModal(worksData);
     })
 
     loginButton.addEventListener("click", () => {
