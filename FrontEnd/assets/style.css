@@ -234,7 +234,7 @@ footer nav ul {
 	display: flex;
 }
 
-.editTopBar{
+.editTopBar__container{
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -367,7 +367,8 @@ footer nav ul {
 	margin: 1em;
 }
 
-.modifyModal__button{
+.modifyModal__button,
+.modifyModal__formButton{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -453,6 +454,11 @@ footer nav ul {
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+
+.modifyModal__form{
+	display: flex;
+	flex-direction: column;
 }
 
 /* Login Screen */

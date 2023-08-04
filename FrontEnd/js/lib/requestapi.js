@@ -1,14 +1,14 @@
 async function getData(endpoint){
     try {
-        let response = await fetch(`http://localhost:5678/api${endpoint}`)
-        let data = response.json()
-        return data
+        let response = await fetch(`http://localhost:5678/api${endpoint}`);
+        let data = await response.json();
+        return data;
     } catch (error) {
         console.log(error.error)
     }
 }
 
-async function postData(endpoint, data){
+async function postData(endpoint, data, token){
     try{
         let response = await fetch(`http://localhost:5678/api${endpoint}`, {
             method: "POST",

@@ -17,7 +17,9 @@ async function loginUsers(){
         })
         if(loginResponse.userId === 1){
             console.log("Logged in")
+            console.log(loginResponse)
             window.location = "index.html"
+            localStorage.setItem("token", loginResponse.token)
             // activateEditMode();
         } else if (loginResponse.userId !== 1){
             console.log("Login Failed" + error.error)
