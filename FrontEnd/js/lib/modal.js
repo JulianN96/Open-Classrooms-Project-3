@@ -10,7 +10,7 @@ async function openModifyModal(worksData){
     })
 
     addButton.addEventListener("click", () => {
-        openAddModal();
+        openAddModal(worksData);
     })
 
     window.onclick = function(event){
@@ -27,12 +27,12 @@ async function openModifyModal(worksData){
     })
 }
 
-function openAddModal(){
+function openAddModal(worksData){
     Display.displayAddModal();
     const closeModalButton = document.querySelector(".modifyModal__close").addEventListener("click", () => {
         modifyModal.style.display = "none"
     })
-    const backModalButton = document.querySelector(".modifyModal__back").addEventListener("click", () => {openModifyModal()})
+    const backModalButton = document.querySelector(".modifyModal__back").addEventListener("click", () => {openModifyModal(worksData)})
     const addForm = document.querySelector(".modifyModal__form")
     addForm.addEventListener("submit", (e) => {
         e.preventDefault();
