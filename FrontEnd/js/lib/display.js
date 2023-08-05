@@ -110,6 +110,9 @@ function displayEditMode() {
     ".modifyProject__container"
   );
   const loginButton = document.getElementById("loginButton");
+  const body = document.querySelector("body")
+
+  body.classList.add("body__margin-top")
 
   editTopBar.innerHTML = `
     <div class="editTopBar__container">
