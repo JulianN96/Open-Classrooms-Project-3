@@ -60,6 +60,8 @@ function displayModifyModal(worksData) {
         `;
   });
   gallery.innerHTML = cards;
+
+  const body = document.querySelector("body").classList.add('noOverflow')
 }
 
 function displayAddModal() {

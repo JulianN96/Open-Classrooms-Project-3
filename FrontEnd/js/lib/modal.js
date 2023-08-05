@@ -6,7 +6,7 @@ async function openModifyModal(worksData){
 
     let addButton = document.querySelector('.modifyModal__button')
     const closeModalButton = document.querySelector('.modifyModal__close').addEventListener('click', () => {
-        modifyModal.style.display = 'none'
+        closeModal()
     })
 
     addButton.addEventListener('click', () => {
@@ -15,7 +15,7 @@ async function openModifyModal(worksData){
 
     window.onclick = function(event){
         if(event.target == modifyModal) {
-            modifyModal.style.display = 'none'
+            closeModal()
         }
     }
 
@@ -30,7 +30,7 @@ async function openModifyModal(worksData){
 function openAddModal(worksData){
     Display.displayAddModal();
     const closeModalButton = document.querySelector('.modifyModal__close').addEventListener('click', () => {
-        modifyModal.style.display = 'none'
+        closeModal()
     })
     const backModalButton = document.querySelector('.modifyModal__back').addEventListener('click', () => {openModifyModal(worksData)})
     const addForm = document.querySelector('.modifyModal__form')
@@ -68,6 +68,10 @@ function addNewWork(){
     Requestapi.postData('/works', newWork, localStorage.token)
 }
 
+function closeModal(){
+    modifyModal.style.display = 'none'
+    const body = document.querySelector("body").classList.remove('noOverflow')
+}
 
 
 export default{
