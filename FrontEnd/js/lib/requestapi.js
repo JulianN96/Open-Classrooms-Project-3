@@ -25,7 +25,7 @@ async function postData(endpoint, data, token){
         })
         return response.json()
     } catch(error){
-        console.log(error.error)
+        console.log(error)
     }
 }
 

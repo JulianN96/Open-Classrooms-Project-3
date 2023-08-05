@@ -20,7 +20,6 @@ async function openModifyModal(worksData){
     }
 
     let deleteWorkButtonArray = document.getElementsByClassName("modifyModal__figureDelete")
-    console.log(deleteWorkButtonArray)
     Array.from(deleteWorkButtonArray).forEach((deleteButton) => {
         deleteButton.addEventListener("click", (e) => {
             Requestapi.deleteWork("/works", deleteButton.id, localStorage.token)
@@ -34,7 +33,11 @@ function openAddModal(){
         modifyModal.style.display = "none"
     })
     const backModalButton = document.querySelector(".modifyModal__back").addEventListener("click", () => {openModifyModal()})
-    const submitButton = document.querySelector(".modifyModal__formButton").addEventListener("click", () => {addNewWork})
+    const addForm = document.querySelector(".modifyModal__form")
+    addForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        addNewWork()
+    })
 }
 
 function addNewWork(){
@@ -45,11 +48,11 @@ function addNewWork(){
     let newWork = {
         "image": newImage.value,
         "title": newTitle.value,
-        "category": newCategory.value
+        "category": +newCategory.value
     }
 
     console.log(newWork)
-    // Requestapi.postData("/works", newWork, localStorage.token)
+    Requestapi.postData("/works", newWork, localStorage.token)
 }
 
 export default{

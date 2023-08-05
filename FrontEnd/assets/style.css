@@ -460,6 +460,9 @@ footer nav ul {
 	margin: 1em;
 }
 
+.modifyModal__imageAddContainer::placeholder{
+	color: blue
+}
 /* .modifyModal__imageAddContainer, */
 
 .modifyModal__imageAddRules{
