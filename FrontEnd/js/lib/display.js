@@ -84,23 +84,25 @@ function displayAddModal() {
           <label for="image" class="modifyModal__imageAddRules">jpg, png : 4mo max</label>
           <input 
             value="Ajouter +"
-            class="modifyModal__imageAddContainer" 
+            class="modifyModal__imageAddContainer addModalField" 
             type="file" 
             accept="image/png, image/jpg, image/jpeg" 
             name="image"
+            required
           />
         </div>
-          <label for="title">Titre</label>
-          <input type="text" class="addModal__title" name="title">
-          <label for="category" >Catégorie</label>
-          <select class="addModal__category" name="category">
+          <label class="addModal__label" for="title">Titre</label>
+          <input type="text" class="addModal__title addModalField" name="title" required>
+          <label class="addModal__label" for="category" >Catégorie</label>
+          <select class="addModal__category addModalField" name="category" required>
+            <option class="disabledOption" disabled selected value></option>
             <option value=1>Objets</option>
             <option value=2>Appartements</option>
             <option value=3>Hotels & Restaurants</option>
           </select>
-          <button class="modifyModal__formButton">Valider</button>
-      </form>
-      <div class="modifyModal__formDivider></div>
+          <button class="modifyModal__formButton" disabled>Valider</button>
+          </form>
+          <div class="modifyModal__formDivider></div>
   `;
 }
 

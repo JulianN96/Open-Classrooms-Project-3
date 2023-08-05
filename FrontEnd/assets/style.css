@@ -97,8 +97,10 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
+li:hover,
+.nav__menu:hover {
 	color: #B1663C;
+	cursor: pointer;
 }
 #introduction {
 	display: flex;
@@ -450,6 +452,13 @@ footer nav ul {
 	height: 51px;
 	background: #FFF;
 	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	border: none;
+	padding: 0 1em;
+}
+
+.addModal__title{
+	width: 393px;
+	height: 45px;
 }
 
 .modifyModal__imageAddContainer{
@@ -491,6 +500,27 @@ footer nav ul {
 .modifyModal__form{
 	display: flex;
 	flex-direction: column;
+}
+
+.addModal__label{
+	margin-bottom: 0.75em;
+}
+
+.addModal__category,
+.addModal__title{
+	margin-bottom: 1em;
+}
+
+.disabledOption{
+	display: none;
+}
+
+.modifyModal__formButton:disabled{
+	background-color: #A7A7A7;
+}
+
+.modifyModal__formButton:disabled:hover{
+	cursor:not-allowed;
 }
 
 /* Login Screen */
