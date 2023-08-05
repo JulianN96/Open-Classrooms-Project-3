@@ -138,10 +138,16 @@ function displayEditMode() {
   loginButton.innerHTML = `logout`;
 }
 
+function displaySessionExpired(){
+  window.alert("Session Expiré. Veuillez vous identifier");
+  window.location = 'login.html';
+}
+
 export default {
   displayWorks,
   filterDisplay,
   displayModifyModal,
   displayAddModal,
   displayEditMode,
+  displaySessionExpired
 };

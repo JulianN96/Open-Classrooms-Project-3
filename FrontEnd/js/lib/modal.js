@@ -6,7 +6,7 @@ async function openModifyModal(worksData){
 
     let addButton = document.querySelector('.modifyModal__button')
     const closeModalButton = document.querySelector('.modifyModal__close').addEventListener('click', () => {
-        closeModal()
+        closeModal();
     })
 
     addButton.addEventListener('click', () => {
@@ -15,7 +15,7 @@ async function openModifyModal(worksData){
 
     window.onclick = function(event){
         if(event.target == modifyModal) {
-            closeModal()
+            closeModal();
         }
     }
 
@@ -30,13 +30,13 @@ async function openModifyModal(worksData){
 function openAddModal(worksData){
     Display.displayAddModal();
     const closeModalButton = document.querySelector('.modifyModal__close').addEventListener('click', () => {
-        closeModal()
+        closeModal();
     })
     const backModalButton = document.querySelector('.modifyModal__back').addEventListener('click', () => {openModifyModal(worksData)})
     const addForm = document.querySelector('.modifyModal__form')
     addForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        addNewWork()
+        addNewWork();
     })
 
     const addModalField = document.getElementsByClassName('addModalField')
@@ -45,7 +45,7 @@ function openAddModal(worksData){
     Array.from(addModalField).forEach((field) => {
         field.addEventListener('input', () => {
             if(addModalField[0].value && addModalField[1].value && addModalField[2].value){
-                addButton.removeAttribute('disabled');
+                addButton.removeAttribute('disabled')
             } else (
                 addButton.setAttribute('disabled', 'true')
             )
@@ -64,13 +64,13 @@ function addNewWork(){
         "category": +newCategory.value
     }
 
-    console.log(newWork)
-    Requestapi.postData('/works', newWork, localStorage.token)
+    console.log(newWork);
+    Requestapi.postData('/works', newWork, localStorage.token);
 }
 
 function closeModal(){
-    modifyModal.style.display = 'none'
-    const body = document.querySelector("body").classList.remove('noOverflow')
+    modifyModal.style.display = 'none';
+    const body = document.querySelector("body").classList.remove('noOverflow');
 }
 
 

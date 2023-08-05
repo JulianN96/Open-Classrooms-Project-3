@@ -1,3 +1,5 @@
+import Display from "./display.js";
+
 async function getData(endpoint){
     try {
         let response = await fetch(`http://localhost:5678/api${endpoint}`);
@@ -30,7 +32,6 @@ async function postData(endpoint, data, token){
 }
 
 async function deleteWork(endpoint, id, token){
-    console.log(token)
     try{
         let response = await fetch(`http://localhost:5678/api${endpoint}/${id}`, {
             method: "DELETE",
@@ -47,9 +48,13 @@ async function deleteWork(endpoint, id, token){
                 "id": id
             })
         })
+            if(response.status === 401) {
+                console.log("User Session Expired")
+                Display.displaySessionExpired();
+            }
             return response.json()
     } catch(error){
-        console.log("Error:" + error.error)
+        console.log(error.error)
     }
 }
 

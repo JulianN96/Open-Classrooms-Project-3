@@ -1,7 +1,5 @@
 import Requestapi from "./lib/requestapi.js"
 
-
-
 //Login Function
 async function loginUsers(){
 
@@ -16,31 +14,16 @@ async function loginUsers(){
             "password": loginPassword.value
         })
         if(loginResponse.userId === 1){
-            console.log("Logged in")
-            console.log(loginResponse)
             window.location = "index.html"
             localStorage.setItem("token", loginResponse.token)
             // activateEditMode();
         } else if (loginResponse.userId !== 1){
-            console.log("Login Failed" + error.error)
             errorMessage.style.display = "block"
             loginUser.classList.add("login__form--incorrect")
             loginPassword.classList.add("login__form--incorrect")
         }
     }
-        // console.log(loginUser.value)
-        // const loginPromise = makeRequest("POST", api + "/users/login", {
-        //     "email": loginUser.value,
-        //     "password": loginPassword.value
-        // })
-        // try{
-        //     const loginResponse = await loginPromise;
-        //     if(loginResponse.userId === 1){
-        //         console.log("Logged in")
-        //         window.location = "index.html"
-        //         // activateEditMode();
-        //     }
-        // }
+
     catch(error){
         console.log("Login Failed" + error.error)
         errorMessage.style.display = "block"
@@ -48,9 +31,6 @@ async function loginUsers(){
         loginPassword.classList.add("login__form--incorrect")
     }
 }
-
-
-
 
 function init(){
     const loginForm = document.getElementById("login__form")
