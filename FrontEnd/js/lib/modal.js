@@ -4,38 +4,6 @@ import Requestapi from './requestapi.js';
 async function openModifyModal(worksData){
     Display.displayModifyModal(worksData)
     modifyListeners(worksData)
-    // let addButton = document.querySelector('.modifyModal__button')
-    // const closeModalButton = document.querySelector('.modifyModal__close').addEventListener('click', () => {
-    //     closeModal();
-    // })
-
-    // addButton.addEventListener('click', () => {
-    //     openAddModal(worksData);
-    // })
-
-    // window.onclick = function(event){
-    //     if(event.target == modifyModal) {
-    //         closeModal();
-    //     }
-    // }
-
-    // let deleteWorkButtonArray = document.getElementsByClassName('modifyModal__figureDelete')
-    // Array.from(deleteWorkButtonArray).forEach((deleteButton) => {
-    //     deleteButton.addEventListener('click', (e) => {
-    //         // Requestapi.deleteWork('http://localhost:5678/api/works', deleteButton.id, localStorage.token)
-    //         console.log(e.target.parentNode.id)
-    //         console.log(worksData)
-    //         Array.from(worksData).forEach((work, i) => {
-    //             console.log(work.id)
-    //             if (work.id == e.target.parentNode.id){
-    //                 console.log("identified", i);
-    //                 worksData.splice(i, 1);
-    //                 console.log(worksData);
-    //                 Display.displayModifyModal(worksData);
-    //             }
-    //         })
-    //     })
-    // })
 }
 
 function modifyListeners(worksData){

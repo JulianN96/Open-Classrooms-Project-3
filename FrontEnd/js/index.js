@@ -35,7 +35,7 @@ async function init(){
         button.addEventListener("click", (e) =>{
             if(e.target.classList.contains("filters__button--active")){
                 e.target.classList.remove("filters__button--active")
-                getWorks("gallery")
+                getWorks(worksData, "gallery")
                 filterButtons[0].classList.add("filters__button--active")
             } else if(!e.target.classList.contains("filters__button--active")){
                 Array.from(filterButtons).forEach((sbutton) => {
