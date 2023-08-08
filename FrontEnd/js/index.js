@@ -26,7 +26,7 @@ async function init(){
         Display.displayEditMode()
     }
 
-    let worksData = await Requestapi.getData("/works");
+    let worksData = await Requestapi.getData("http://localhost:5678/api/works");
     const filterButtons = document.getElementsByClassName("filters__button")
     const modifyProjectsButton = document.querySelector(".modifyProject__container")
     

@@ -22,7 +22,7 @@ async function openModifyModal(worksData){
     let deleteWorkButtonArray = document.getElementsByClassName('modifyModal__figureDelete')
     Array.from(deleteWorkButtonArray).forEach((deleteButton) => {
         deleteButton.addEventListener('click', (e) => {
-            Requestapi.deleteWork('/works', deleteButton.id, localStorage.token)
+            Requestapi.deleteWork('http://localhost:5678/api/works', deleteButton.id, localStorage.token)
         })
     })
 }
@@ -54,18 +54,14 @@ function openAddModal(worksData){
 }
 
 function addNewWork(){
-    const newImage = document.querySelector('.modifyModal__imageAddContainer')
-    const newTitle = document.querySelector('.addModal__title')
-    const newCategory = document.querySelector('.addModal__category')
 
-    let newWork = {
-        "image": newImage.value,
-        "title": newTitle.value,
-        "category": +newCategory.value
-    }
+    const addForm = document.querySelector('.modifyModal__form')
 
-    console.log(newWork);
-    Requestapi.postData('/works', newWork, localStorage.token);
+    const formData = new FormData(addForm)
+    const values = [...formData.entries()]
+
+    console.log(values);
+    Requestapi.postData('http://localhost:5678/api/works', formData, "FORM", localStorage.token);
 }
 
 function closeModal(){

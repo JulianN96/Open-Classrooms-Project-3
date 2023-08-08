@@ -9,10 +9,10 @@ async function loginUsers(){
     const errorMessage = document.getElementById("login__form--errorMessage")
 
     try{
-        const loginResponse = await Requestapi.postData("/users/login", {
+        const loginResponse = await Requestapi.postData("http://localhost:5678/api/users/login", {
             "email": loginUser.value,
             "password": loginPassword.value
-        })
+        },"JSON")
         if(loginResponse.userId === 1){
             window.location = "index.html"
             localStorage.setItem("token", loginResponse.token)
@@ -33,6 +33,11 @@ async function loginUsers(){
 }
 
 function init(){
+
+    if (localStorage.token){
+        window.location = "index.html"
+    }
+
     const loginForm = document.getElementById("login__form")
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault(); 
