@@ -65,7 +65,29 @@ function openAddModal(worksData){
             )
         })
     })
+
+    const addImageField = document.querySelector(".addModalInputImage")
+    addImageField.addEventListener('change', () => {
+        let preview = document.querySelector(".addModalInputImagePreview");
+        let file = document.querySelector('input[type=file]').files[0];
+        let reader = new FileReader();
+        let addButton = document.querySelector('.modifyModal__imageAddButton')
+
+        addButton.style.opacity = 0;
+        preview.style.opacity = 100;
+    
+        console.log("IMAGE READ")
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    })
 }
+
 
 function addNewWork(){
 

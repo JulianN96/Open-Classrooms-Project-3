@@ -335,7 +335,6 @@ footer nav ul {
 	border: 1px solid #888;
 	border-radius: 10px;
 	width: 630px;
-	/* height: 731px; */
 	flex-shrink: 0;
 }
 
@@ -415,9 +414,6 @@ footer nav ul {
 	cursor: pointer;
 }
 
-
-/* Add modal*/
-
 .modifyModal__topIcons{
 	width: 90%;
 	display: flex;
@@ -439,6 +435,7 @@ footer nav ul {
 .addModal__input
 {
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -449,6 +446,26 @@ footer nav ul {
 	flex-shrink: 0;
 	margin-bottom: 1em;
 }
+
+.addModalInputImage{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+}
+
+.addModalInputImagePreview{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	opacity: 0;
+	z-index: 2;
+}
+
 
 .addModal__title,
 .addModal__category{
@@ -465,12 +482,7 @@ footer nav ul {
 	height: 45px;
 }
 
-.modifyModal__imageAddContainer{
-	height: 100%;
-	width: 100%;
-}
-
-.modifyModal__imageAddContainer::file-selector-button {
+.modifyModal__imageAddButton {
 	width: 173px;
 	height: 36px;
 	border-radius: 50px;
@@ -486,12 +498,17 @@ footer nav ul {
 	margin: 1em;
 }
 
+.addModalField::file-selector-button{
+	opacity: 0;
+}
+
+
 .modifyModal__imageAddContainer::placeholder{
 	color: blue
 }
-/* .modifyModal__imageAddContainer, */
 
 .modifyModal__imageAddRules{
+	display: flex;
 	color: #444;
 	text-align: center;
 	font-family: Work Sans;
