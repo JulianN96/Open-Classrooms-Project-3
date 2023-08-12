@@ -287,7 +287,8 @@ footer nav ul {
 }
 
 
-.modifyProject__container{
+.modifyProject__container,
+.modifyIntro__container{
 	display: flex;
 	cursor: pointer;
 	margin-left: 2em;
