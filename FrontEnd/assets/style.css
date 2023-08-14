@@ -457,6 +457,11 @@ footer nav ul {
 	z-index: 3;
 }
 
+.addModalInputImage:hover,
+.addModalInputImage:active{
+	cursor: pointer;
+}
+
 .addModalInputImagePreview{
 	position: absolute;
 	top: 0;
