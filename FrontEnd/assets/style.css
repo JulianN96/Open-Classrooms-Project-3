@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
 }
 ol, ul {
 	list-style: none;
@@ -95,8 +96,10 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
+li:hover,
+.nav__menu:hover {
 	color: #B1663C;
+	cursor: pointer;
 }
 #introduction {
 	display: flex;
@@ -125,6 +128,48 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.body__margin-top{
+	margin-top: 6em;
+}
+
+.noOverflow{
+	overflow: hidden;
+}
+
+.nav__menu{
+	color: black;
+	text-decoration: none;
+}
+
+.filters{
+	display: flex;
+	justify-content: space-around;
+	width: 50%;
+	margin: 1em auto;
+}
+
+.filters__button{
+	color: #1D6154;
+	font-size: 1em;
+	font-weight: 700;
+	font-family: 'Syne';
+	text-align: center;
+	padding: 1em;
+	background-color: #FFFEF8;
+	border-radius: 60px;
+	border: 1px solid #1D6154;	
+}
+
+.filters__button--active{
+	background-color: #1D6154;
+	color: #FFFEF8;
+}
+
+.filters__button:active, .filters__button:hover{
+	cursor: pointer;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -186,3 +231,419 @@ footer nav ul {
 	margin: 2em
 }
 
+.menuActive{
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+/* Edit Mode */
+
+.editMode--active{
+	display: flex;
+}
+
+.editTopBar__container{
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin-bottom: 2em;
+	justify-self: flex-start;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 59px;
+	background-color: black;
+}
+
+.editTopBar__text{
+	padding-left: .5em;
+	padding-right: 1em;
+	color: #FFF;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.editTopBar__button{
+	width: 216px;
+	height: 38px;
+	flex-shrink: 0;
+	border-radius: 60px;
+	background: #FFF;
+	border: none;
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+
+.modifyProject__container,
+.modifyIntro__container{
+	display: flex;
+	cursor: pointer;
+	margin-left: 2em;
+	margin-bottom: 2em;
+}
+
+.modifyProject__text{
+	padding-left: .5em;
+}
+
+.editMode--hidden{
+	display: none;
+}
+
+.projectsTitle__container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+/* Modal */
+
+#modifyModal{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: none;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0,0,0,0.4); 
+}
+
+.modifyModal__content{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #FFF;
+	margin: 4% auto;
+	padding: 2em;
+	border: 1px solid #888;
+	border-radius: 10px;
+	width: 630px;
+	flex-shrink: 0;
+}
+
+.modifyModal__close{
+	align-self: flex-end;
+	cursor: pointer;
+}
+
+.modifyModal__back{
+	cursor: pointer;
+}
+
+.modifyModal__gallery{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 1.25em;
+	width: 80%;
+	margin: 4em 1em;
+}
+
+.modifyModal__workContainer{
+	display: flex;
+	flex-direction: column;
+	width: 78.123px;
+	height: 104.08px;
+	flex-shrink: 0;
+	position: relative;
+}
+
+.modifyModal__figureDelete{
+	position: absolute;
+	z-index: 2;
+	top: 5px;
+	left: 55px;
+	cursor: pointer;
+}
+
+.modifyModal__figureTrash{
+	background-color: black;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.modifyModal__divider{
+	width: 420px;
+	height: 1px;
+	background: #B3B3B3;
+	margin: 1em;
+}
+
+.modifyModal__button,
+.modifyModal__formButton{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 240px;
+	text-align: center;
+	border: none;
+	padding: 1em 1.5em;
+	border-radius: 60px ;
+	color: #FFF;
+	cursor: pointer;
+}
+
+.modifyModal__deleteGallery{
+	background-color: #FFF;
+	border: none;
+	color: #D65353;
+	text-align: center;
+	font-family: Syne;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	cursor: pointer;
+}
+
+.modifyModal__topIcons{
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	margin: 1em 0;
+}
+
+.modifyModal__imageAddTitle{
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 1em;
+}
+
+.addModal__input
+{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 3px;
+	background: #E8F1F6;
+	width: 420px;
+	height: 169px;
+	flex-shrink: 0;
+	margin-bottom: 1em;
+}
+
+.addModalInputImage{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+}
+
+.addModalInputImage:hover,
+.addModalInputImage:active{
+	cursor: pointer;
+}
+
+.addModalInputImagePreview{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	opacity: 0;
+	z-index: 2;
+}
+
+
+.addModal__title,
+.addModal__category{
+	width: 420px;
+	height: 51px;
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	border: none;
+	padding: 0 1em;
+}
+
+.addModal__title{
+	width: 393px;
+	height: 45px;
+}
+
+.modifyModal__imageAddButton {
+	width: 173px;
+	height: 36px;
+	border-radius: 50px;
+	border: none;
+	background: #CBD6DC;
+	color: #306685;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin: 1em;
+}
+
+.addModalField::file-selector-button{
+	opacity: 0;
+}
+
+
+.modifyModal__imageAddContainer::placeholder{
+	color: blue
+}
+
+.modifyModal__imageAddRules{
+	display: flex;
+	color: #444;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.modifyModal__form{
+	display: flex;
+	flex-direction: column;
+}
+
+.addModal__label{
+	margin-bottom: 0.75em;
+}
+
+.addModal__category,
+.addModal__title{
+	margin-bottom: 1em;
+}
+
+.disabledOption{
+	display: none;
+}
+
+.modifyModal__formButton:disabled{
+	background-color: #A7A7A7;
+}
+
+.modifyModal__formButton:disabled:hover{
+	cursor:not-allowed;
+}
+
+/* Login Screen */
+
+.login__main{
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	height: 80vh;
+}
+
+.login__form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 379px;
+
+}
+
+.login__title{
+	margin: 2em;
+}
+
+.login__form .p{
+	color: #3D3D3D;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+}
+
+.login__form button{
+	border-radius: 60px;
+	align-self: center;
+	background: #1D6154;
+	width: 179px;
+	height: 36px;
+	flex-shrink: 0;
+	border: none;
+	color: #FFF;
+	text-align: center;
+	font-family: Syne;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.login__form button:hover,
+.login__form button:active{
+	cursor: pointer;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+.login__form-email,
+.login__form-password{
+	margin: 0.5em 0 2em 0;
+	align-self: center;
+	width: 363px;
+	height: 51px;
+	flex-shrink: 0;
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	border: none;
+	padding: 0em 1em;
+	font-family: Syne;
+	font-size: 1em;
+}
+
+.login__form--incorrect{
+	border: solid 1px red;
+}
+
+#login__form--errorMessage{
+	display: none;
+	align-self: center;
+	padding-bottom: 1em;
+	color: red;
+}
+
+.login__form a{
+	align-self: center;
+	margin: 2em 0;
+	color: #3D3D3D;
+}
+
+footer{
+	width: 100%;
+	display: flex;
+	justify-content: end;
+}
+
+footer a{
+	color:#3D3D3D;
+	text-decoration: none;
+	font-family: Work Sans;
+}
