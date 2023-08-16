@@ -10,12 +10,38 @@ async function getWorks(worksData, galleryId){
     } 
 }
 
-function activateEditMode(){
-    let editModeItems = document.getElementsByClassName("editMode--hidden")
-    for (editItem of editModeItems){
-        editItem.classList.remove("editMode--hidden")
-        editItem.classList.add("editMode--active")
-    }
+// function activateEditMode(){
+//     let editModeItems = document.getElementsByClassName("editMode--hidden")
+//     for (editItem of editModeItems){
+//         editItem.classList.remove("editMode--hidden")
+//         editItem.classList.add("editMode--active")
+//     }
+// }
+
+function filterListeners(worksData){
+    const filterButtons = document.getElementsByClassName("filters__button")
+    Array.from(filterButtons).forEach((button) => {
+        button.addEventListener("click", (e) =>{
+            if(e.target.classList.contains("filters__button--active")){
+                e.target.classList.remove("filters__button--active")
+                getWorks(worksData, "gallery")
+                filterButtons[0].classList.add("filters__button--active")
+            } else if(!e.target.classList.contains("filters__button--active")){
+                Array.from(filterButtons).forEach((sbutton) => {
+                    sbutton.classList.remove("filters__button--active")
+                });
+                e.target.classList.add("filters__button--active")
+                function addFilter(){
+                    Display.filterDisplay(worksData, e.target.id)
+                }
+                addFilter()
+            }
+            if(e.target.id == 0){
+                getWorks(worksData, "gallery")
+            }
+            console.log("full run")
+        })
+    })
 }
 
 async function init(){
@@ -29,29 +55,29 @@ async function init(){
     let worksData = await Requestapi.getData("http://localhost:5678/api/works");
     const filterButtons = document.getElementsByClassName("filters__button")
     const modifyProjectsButton = document.querySelector(".modifyProject__container")
-    
-    //Filter Logic
-    Array.from(filterButtons).forEach((button) => {
-        button.addEventListener("click", (e) =>{
-            if(e.target.classList.contains("filters__button--active")){
-                e.target.classList.remove("filters__button--active")
-                getWorks(worksData, "gallery")
-                filterButtons[0].classList.add("filters__button--active")
-            } else if(!e.target.classList.contains("filters__button--active")){
-                Array.from(filterButtons).forEach((sbutton) => {
-                    sbutton.classList.remove("filters__button--active")
-                });
-                e.target.classList.add("filters__button--active")
-                async function addFilter(){
-                    Display.filterDisplay(worksData, e.target.id)
-                }
-                addFilter()
-            }
-            if(e.target.id == 0){
-                getWorks(worksData, "gallery")
-            }
-        })
-    })
+    filterListeners(worksData);
+    // //Filter Logic
+    // Array.from(filterButtons).forEach((button) => {
+    //     button.addEventListener("click", (e) =>{
+    //         if(e.target.classList.contains("filters__button--active")){
+    //             e.target.classList.remove("filters__button--active")
+    //             getWorks(worksData, "gallery")
+    //             filterButtons[0].classList.add("filters__button--active")
+    //         } else if(!e.target.classList.contains("filters__button--active")){
+    //             Array.from(filterButtons).forEach((sbutton) => {
+    //                 sbutton.classList.remove("filters__button--active")
+    //             });
+    //             e.target.classList.add("filters__button--active")
+    //             async function addFilter(){
+    //                 Display.filterDisplay(worksData, e.target.id)
+    //             }
+    //             addFilter()
+    //         }
+    //         if(e.target.id == 0){
+    //             getWorks(worksData, "gallery")
+    //         }
+    //     })
+    // })
 
     getWorks(worksData, "gallery")
 
@@ -70,3 +96,7 @@ async function init(){
 }
 
 init()
+
+export default {
+    filterListeners
+}

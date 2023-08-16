@@ -1,5 +1,6 @@
 import Display from './display.js';
 import Requestapi from './requestapi.js';
+import Index from '../index.js';
 
 async function openModifyModal(worksData){
     Display.displayModifyModal(worksData)
@@ -91,7 +92,6 @@ function openAddModal(worksData){
     })
 }
 
-
 async function addNewWork(){
 
     const addForm = document.querySelector('.modifyModal__form')
@@ -118,9 +118,9 @@ async function addNewWork(){
 function closeModal(worksData){
     modifyModal.style.display = 'none';
     const body = document.querySelector("body").classList.remove('noOverflow');
-    Display.displayWorks(worksData)
+    Index.filterListeners(worksData);
+    Display.displayWorks(worksData);
 }
-
 
 export default{
     openModifyModal,
