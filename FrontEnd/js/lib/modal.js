@@ -119,7 +119,9 @@ function closeModal(worksData){
     modifyModal.style.display = 'none';
     const body = document.querySelector("body").classList.remove('noOverflow');
     Index.filterListeners(worksData);
+    Index.filterListeners(worksData);
     Display.displayWorks(worksData);
+    Index.modifyListener(worksData);
 }
 
 export default{

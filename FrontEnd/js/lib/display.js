@@ -149,8 +149,8 @@ function displayEditMode() {
 }
 
 function displaySessionExpired() {
-  window.alert("Session Expiré. Veuillez vous identifier");
   window.location = "login.html";
+  window.alert("Session Expiré. Veuillez vous identifier");
 }
 
 export default {

@@ -4,7 +4,7 @@ import Modal from './lib/modal.js';
 
 async function getWorks(worksData, galleryId){
     
-    const gallery = document.getElementsByClassName(`${galleryId}`)
+    // const gallery = document.getElementsByClassName(`${galleryId}`)
     if (galleryId == "gallery"){
         Display.displayWorks(worksData);
     } 
@@ -41,6 +41,13 @@ function filterListeners(worksData){
             }
             console.log("full run")
         })
+    })
+}
+
+function modifyListener(worksData){
+    const modifyProjectsButton = document.querySelector(".modifyProject__container")
+    modifyProjectsButton.addEventListener("click", (e) => {
+        Modal.openModifyModal(worksData);
     })
 }
 
@@ -81,9 +88,7 @@ async function init(){
 
     getWorks(worksData, "gallery")
 
-    modifyProjectsButton.addEventListener("click", (e) => {
-        Modal.openModifyModal(worksData);
-    })
+    modifyListener(worksData)
 
     loginButton.addEventListener("click", () => {
         if(token){
@@ -98,5 +103,6 @@ async function init(){
 init()
 
 export default {
-    filterListeners
+    filterListeners,
+    modifyListener
 }
