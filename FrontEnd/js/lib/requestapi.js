@@ -30,7 +30,7 @@ async function postData(endpoint, data, type, token){
             console.log("User Session Expired")
             Display.displaySessionExpired();
         }
-        return response.json()
+        return await response.json()
         } catch(error){
             console.log(error)
         }
@@ -52,7 +52,7 @@ async function postData(endpoint, data, type, token){
             console.log("User Session Expired")
             Display.displaySessionExpired();
         }
-        return response.json()
+        return await response.json()
         } catch(error){
             console.log(error)
         }
@@ -80,7 +80,7 @@ async function deleteWork(endpoint, id, token){
                 console.log("User Session Expired")
                 Display.displaySessionExpired();
             }
-            return response.json()
+            return await response.json()
     } catch(error){
         console.log(error.error)
     }

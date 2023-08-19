@@ -106,6 +106,7 @@ function displayAddModal() {
           </select>
           <button class="modifyModal__formButton" disabled>Valider</button>
           </form>
+          <div class="addModal__errorMessage"></div>
           <div class="modifyModal__formDivider></div>
   `;
 }
@@ -148,8 +149,8 @@ function displayEditMode() {
 }
 
 function displaySessionExpired() {
-  window.alert("Session Expiré. Veuillez vous identifier");
   window.location = "login.html";
+  window.alert("Session Expiré. Veuillez vous identifier");
 }
 
 export default {
